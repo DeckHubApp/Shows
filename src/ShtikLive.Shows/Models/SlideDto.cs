@@ -19,6 +19,8 @@ namespace ShtikLive.Shows.Models
 
         public string Html { get; set; }
 
+        public bool HasBeenShown { get; set; }
+
         public static SlideDto FromSlide(string presenter, string slug, Slide slide)
         {
             return new SlideDto
@@ -28,7 +30,21 @@ namespace ShtikLive.Shows.Models
                 Number = slide.Number,
                 Title = slide.Title,
                 Layout = slide.Layout,
-                Html = slide.Html
+                Html = slide.Html,
+                HasBeenShown = slide.HasBeenShown
+            };
+        }
+        public static SlideDto FromSlide(Slide slide)
+        {
+            return new SlideDto
+            {
+                Presenter = slide.Show.Presenter,
+                Slug = slide.Show.Slug,
+                Number = slide.Number,
+                Title = slide.Title,
+                Layout = slide.Layout,
+                Html = slide.Html,
+                HasBeenShown = slide.HasBeenShown
             };
         }
     }
