@@ -3,8 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using ShtikLive.Shows.Data;
 using ShtikLive.Shows.Models;
+using StackExchange.Redis;
 
 namespace ShtikLive.Shows.Controllers
 {
@@ -14,10 +16,12 @@ namespace ShtikLive.Shows.Controllers
     public class SlidesController
     {
         private readonly ShowContext _context;
+        private readonly ConnectionMultiplexer _redis;
 
-        public SlidesController(ShowContext context)
+        public SlidesController(ShowContext context, ConnectionMultiplexer redis)
         {
             _context = context;
+            _redis = redis;
         }
 
         [HttpGet("{presenter}/{slug}/{number:int}")]
@@ -56,7 +60,20 @@ namespace ShtikLive.Shows.Controllers
                 await _context.SaveChangesAsync(ct);
             }
 
+            await PublishMessage(presenter, slug, number).ConfigureAwait(false);
+
             return Accepted();
+        }
+
+        private Task PublishMessage(string presenter, string slug, int number)
+        {
+            var message = new ShowSlideMessage
+            {
+                Presenter = presenter,
+                Slug = slug,
+                Slide = number
+            };
+            return _redis.GetDatabase().PublishAsync("shtik:messaging", JsonConvert.SerializeObject(message));
         }
     }
 }
