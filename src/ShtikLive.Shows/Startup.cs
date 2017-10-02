@@ -19,8 +19,6 @@ namespace ShtikLive.Shows
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(ConnectionMultiplexer.Connect(Configuration.GetValue("Redis:Host", "localhost")));
-
             services.AddDbContextPool<ShowContext>(b =>
             {
                 b.UseNpgsql(Configuration.GetConnectionString("Shows"));

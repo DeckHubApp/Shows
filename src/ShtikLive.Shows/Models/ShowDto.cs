@@ -22,11 +22,10 @@ namespace ShtikLive.Shows.Models
         [MaxLength(256)]
         public string Place { get; set; }
 
-        public List<SlideDto> Slides { get; set; }
+        public int? HighestSlideShown { get; set; }
 
         public static ShowDto FromShow(Show show)
         {
-            var slides = show.Slides?.Select(SlideDto.FromSlide) ?? Enumerable.Empty<SlideDto>();
             return new ShowDto
             {
                 Presenter = show.Presenter,
@@ -34,7 +33,7 @@ namespace ShtikLive.Shows.Models
                 Title = show.Title,
                 Time = show.Time,
                 Place = show.Place,
-                Slides = slides.ToList()
+                HighestSlideShown = show.HighestSlideShown
             };
         }
     }

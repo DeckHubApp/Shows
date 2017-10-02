@@ -49,6 +49,21 @@ namespace ShtikLive.Shows.Controllers
             return show == null ? NotFound() : Ok(ShowDto.FromShow(show));
         }
 
+        [HttpPut("{presenter}/{slug}")]
+        public async Task<IActionResult> Set(string presenter, string slug, [FromQuery] int? highestSlideShown,
+            CancellationToken ct)
+        {
+            if (!highestSlideShown.HasValue) return new BadRequestResult();
+
+            var rowsUpdated = await _context.Database.ExecuteSqlCommandAsync(
+                @"UPDATE ""Shows"" SET ""HighestSlideShown"" = CASE WHEN ""HighestSlideShown"" > {0} THEN ""HighestSlideShown"" ELSE {0} END
+                  WHERE ""Presenter"" = {1} AND ""Slug"" = {2}",
+                highestSlideShown.Value, presenter, slug
+            );
+
+            return rowsUpdated > 0 ? Accepted() : NotFound();
+        }
+
         [HttpGet("find/by/{handle}")]
         public async Task<IActionResult> ListByPresenter(string handle, CancellationToken ct)
         {

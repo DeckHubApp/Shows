@@ -22,6 +22,6 @@ namespace ShtikLive.Shows.Data
         [MaxLength(256)]
         public string Place { get; set; }
 
-        public List<Slide> Slides { get; set; }
+        public int? HighestSlideShown { get; set; }
     }
 }
