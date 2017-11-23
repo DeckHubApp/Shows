@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shows-migrate
+  namespace: shtik
+spec:
+  template:
+    metadata:
+      name: shows-migrate
+    spec:
+      containers:
+      - name: shows-migrate
+        image: shtik/shows-migrate:1.1.0
+        args: ["$(SECRET_CONNSTR)"]
+        env:
+          - name: SECRET_CONNSTR
+            valueFrom:
+              secretKeyRef:
+                name: shows-db
+                key: connstr
+      restartPolicy: OnFailure
