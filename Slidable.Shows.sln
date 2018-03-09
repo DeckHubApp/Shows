@@ -4,11 +4,11 @@ VisualStudioVersion = 15.0.26730.8
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0E350330-2D25-4628-83C4-9DE9F35F4902}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShtikLive.Shows", "src\ShtikLive.Shows\ShtikLive.Shows.csproj", "{E6F33A4F-0C07-4232-9B44-555405F64506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slidable.Shows", "src\Slidable.Shows\Slidable.Shows.csproj", "{E6F33A4F-0C07-4232-9B44-555405F64506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShtikLive.Shows.Data", "src\ShtikLive.Shows.Data\ShtikLive.Shows.Data.csproj", "{DAEBBA43-77A2-41AA-B761-573B469C6230}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slidable.Shows.Data", "src\Slidable.Shows.Data\Slidable.Shows.Data.csproj", "{DAEBBA43-77A2-41AA-B761-573B469C6230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShtikLive.Shows.Migrate", "src\ShtikLive.Shows.Migrate\ShtikLive.Shows.Migrate.csproj", "{AADF811B-0F0D-4C54-9FED-015B1543ED4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slidable.Shows.Migrate", "src\Slidable.Shows.Migrate\Slidable.Shows.Migrate.csproj", "{AADF811B-0F0D-4C54-9FED-015B1543ED4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
