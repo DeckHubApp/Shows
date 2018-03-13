@@ -1,31 +1,15 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using ShtikLive.Shows.Data;
+﻿using System.Threading.Tasks;
+using JetBrains.Annotations;
+using RendleLabs.EntityFrameworkCore.MigrateHelper;
 
-namespace ShtikLive.Shows.Migrate
+namespace Slidable.Shows.Migrate
 {
-    class Program
+    [UsedImplicitly]
+    public class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var connectionString = args.Length == 1
-                ? args[0]
-                : DesignTimeShowContextFactory.LocalPostgres;
-
-            var options = new DbContextOptionsBuilder<ShowContext>()
-                .UseNpgsql(connectionString, b => b.MigrationsAssembly(DesignTimeShowContextFactory.MigrationAssemblyName))
-                .Options;
-
-            var context = new ShowContext(options);
-
-            var loggerFactory = new LoggerFactory().AddConsole();
-
-            var migrationHelper = new MigrationHelper(loggerFactory);
-
-            Console.WriteLine("Trying migration...");
-            migrationHelper.TryMigrate(context).GetAwaiter().GetResult();
-            Console.WriteLine("Done.");
+            await new MigrationHelper().TryMigrate(args);
         }
     }
 }

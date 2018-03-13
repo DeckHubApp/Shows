@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -6,12 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ShtikLive.Shows.Data;
-using ShtikLive.Shows.Models;
+using Slidable.Shows.Models;
 
-namespace ShtikLive.Shows.Controllers
+namespace Slidable.Shows.Controllers
 {
-    using static ResultMethods;
-
     [Route("shows")]
     public class ShowsController
     {
@@ -31,7 +29,7 @@ namespace ShtikLive.Shows.Controllers
             {
                 _context.Shows.Add(show);
                 await _context.SaveChangesAsync(ct).ConfigureAwait(false);
-                return CreatedAtAction("Get", "Shows", new { presenter = show.Presenter, slug = show.Slug }, ShowDto.FromShow(show));
+                return ResultMethods.CreatedAtAction("Get", "Shows", new { presenter = show.Presenter, slug = show.Slug }, ShowDto.FromShow(show));
 
             }
             catch (System.Exception ex)
@@ -39,14 +37,29 @@ namespace ShtikLive.Shows.Controllers
                 _logger.LogError(EventIds.DatabaseError, ex, ex.Message);
                 throw;
             }
-            
+        }
+
+        [HttpGet("find-by-tag/{tag}")]
+        public async Task<IActionResult> FindByTag(string tag, CancellationToken ct)
+        {
+            try
+            {
+                var shows = await _context.Shows.Where(s => EF.Functions.Like(s.Slug, $"%{tag}%"))
+                    .ToListAsync(ct);
+                return ResultMethods.Ok(shows);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         [HttpGet("{presenter}/{slug}")]
         public async Task<IActionResult> Get(string presenter, string slug, CancellationToken ct)
         {
             var show = await _context.Shows.SingleOrDefaultAsync(s => s.Presenter == presenter && s.Slug == slug, ct).ConfigureAwait(false);
-            return show == null ? NotFound() : Ok(ShowDto.FromShow(show));
+            return show == null ? ResultMethods.NotFound() : ResultMethods.Ok(ShowDto.FromShow(show));
         }
 
         [HttpPut("{presenter}/{slug}")]
@@ -61,7 +74,7 @@ namespace ShtikLive.Shows.Controllers
                 highestSlideShown.Value, presenter, slug
             );
 
-            return rowsUpdated > 0 ? Accepted() : NotFound();
+            return rowsUpdated > 0 ? ResultMethods.Accepted() : ResultMethods.NotFound();
         }
 
         [HttpGet("find/by/{handle}")]
@@ -72,7 +85,7 @@ namespace ShtikLive.Shows.Controllers
                 .OrderByDescending(s => s.Time)
                 .ToListAsync(ct)
                 .ConfigureAwait(false);
-            return Ok(shows.Select(ShowDto.FromShow).ToList());
+            return ResultMethods.Ok(shows.Select(ShowDto.FromShow).ToList());
         }
 
         [HttpGet("find/by/{handle}/latest")]
@@ -84,7 +97,7 @@ namespace ShtikLive.Shows.Controllers
                 .Take(1)
                 .FirstOrDefaultAsync(ct)
                 .ConfigureAwait(false);
-            return show == null ? NotFound() : Ok(ShowDto.FromShow(show));
+            return show == null ? ResultMethods.NotFound() : ResultMethods.Ok(ShowDto.FromShow(show));
         }
     }
 }

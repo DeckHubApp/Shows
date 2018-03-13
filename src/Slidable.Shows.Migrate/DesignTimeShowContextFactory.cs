@@ -1,12 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ShtikLive.Shows.Data;
 
-namespace ShtikLive.Shows.Migrate
+namespace Slidable.Shows.Migrate
 {
+    [PublicAPI]
     public class DesignTimeShowContextFactory : IDesignTimeDbContextFactory<ShowContext>
     {
-        public const string LocalPostgres = "Host=localhost;Database=shows;Username=shtik;Password=secretsquirrel";
+        public const string LocalPostgres = "Host=localhost;Database=shows;Username=slidable;Password=secretsquirrel";
 
         public static readonly string MigrationAssemblyName =
             typeof(DesignTimeShowContextFactory).Assembly.GetName().Name;

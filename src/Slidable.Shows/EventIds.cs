@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace ShtikLive.Shows
+namespace Slidable.Shows
 {
     public static class EventIds
     {

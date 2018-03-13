@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using ShtikLive.Shows.Data;
 
-namespace ShtikLive.Shows.Models
+namespace Slidable.Shows.Models
 {
     public class ShowDto
     {

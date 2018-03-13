@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ShtikLive.Shows.Controllers
+namespace Slidable.Shows.Controllers
 {
     public static class ResultMethods
     {
