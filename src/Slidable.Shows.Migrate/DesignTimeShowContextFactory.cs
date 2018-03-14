@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System.Linq;
+using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using ShtikLive.Shows.Data;
@@ -16,7 +17,7 @@ namespace Slidable.Shows.Migrate
         public ShowContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder()
-                .UseNpgsql(LocalPostgres, b => b.MigrationsAssembly(MigrationAssemblyName));
+                .UseNpgsql(args.FirstOrDefault() ?? LocalPostgres, b => b.MigrationsAssembly(MigrationAssemblyName));
             return new ShowContext(builder.Options);
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Microsoft.Extensions.Logging;
 using RendleLabs.EntityFrameworkCore.MigrateHelper;
 
 namespace Slidable.Shows.Migrate
@@ -9,7 +10,8 @@ namespace Slidable.Shows.Migrate
     {
         public static async Task Main(string[] args)
         {
-            await new MigrationHelper().TryMigrate(args);
+            var loggerFactory = new LoggerFactory().AddConsole((_, level) => true);
+            await new MigrationHelper(loggerFactory).TryMigrate(args);
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Slidable.Shows.Controllers
             {
                 var shows = await _context.Shows.Where(s => EF.Functions.Like(s.Slug, $"%{tag}%"))
                     .ToListAsync(ct);
-                return ResultMethods.Ok(shows);
+                return ResultMethods.Ok(shows.Select(ShowDto.FromShow).ToList());
             }
             catch (Exception e)
             {
