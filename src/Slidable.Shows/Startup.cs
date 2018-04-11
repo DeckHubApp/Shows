@@ -47,7 +47,9 @@ namespace Slidable.Shows
             services.AddSingleton<IHostedService, ShowStartService>();
             services.AddSingleton<IHostedService, ShowSlideService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddMetrics();
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddMetrics();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
