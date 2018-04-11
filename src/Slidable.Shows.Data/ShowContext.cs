@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace ShtikLive.Shows.Data
+namespace Slidable.Shows.Data
 {
     public class ShowContext : DbContext
     {
@@ -18,6 +19,13 @@ namespace ShtikLive.Shows.Data
             modelBuilder.Entity<Show>()
                 .HasIndex(s => new { s.Presenter, s.Slug })
                 .IsUnique();
+        }
+
+        public async Task UpdateHighestShown(string place, string presenter, string slug, int shown)
+        {
+            await Database.ExecuteSqlCommandAsync(
+                "UPDATE Shows SET HighestSlideShown = {0} WHERE Place = {1} AND Presenter = {2} AND Slug = {3} AND HighestSlideShown < {0}",
+                shown, place, presenter, slug);
         }
     }
 }

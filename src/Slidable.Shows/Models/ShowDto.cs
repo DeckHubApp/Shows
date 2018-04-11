@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using ShtikLive.Shows.Data;
+using Slidable.Shows.Data;
 
 namespace Slidable.Shows.Models
 {

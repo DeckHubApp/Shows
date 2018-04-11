@@ -1,0 +1,54 @@
+﻿@model Slidable.Shows.Models.Live.ShowViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <img src="/slides/@Model.Place/@Model.Presenter/@Model.Slug/@Model.Slide" alt="Slide @Model.Slide" class="img-fluid" id="slide-image"/>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <ul class="nav nav-tabs" id="tools-tabs" role="tablist">
+            <li class="nav-item">
+                <a href="#notes-pane" class="nav-link active" id="notes-tab" data-toggle="tab" role="tab" aria-controls="notes" aria-selected="true">Notes</a>
+            </li>
+            <li class="nav-item">
+                <a href="#questions-pane" class="nav-link" id="questions-tab" data-toggle="tab" role="tab" aria-controls="questions" aria-selected="true">Questions</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tool-tab-content">
+            <div class="tab-pane fade show active" id="notes-pane" role="tabpanel" aria-labelledby="notes-tab">
+                <div id="notes"></div>
+            </div>
+            <div class="tab-pane fade" id="questions-pane" role="tabpanel" aria-labelledby="notes-tab">
+                <div id="questions"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <environment include="Development">
+        <script src="~/lib/@@reactivex/rxjs/global/Rx.js"></script>
+        <script src="~/lib/vue/vue.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://unpkg.com/@@reactivex/rxjs@5.5.8/dist/global/Rx.min.js"
+                asp-fallback-src="~/lib/@@reactivex/rxjs/global/Rx.min.js"
+                asp-fallback-test="window.Rx"
+                crossorigin="anonymous"
+                integrity="sha384-LYPfyX2q+SNly4K2wqjt+demgf0pBMCCd0C14kY9SIoEERaTRdmoknW+yZYZ5WPV">
+        </script>
+        <script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"
+                crossorigin="anonymous"
+                integrity="sha384-DwsLA0O/He+RjlS7pFkqEHfsCgdTMU+nSuUq/qkxvKSTED+s4vRttKEZtf4xTW1+"></script>
+    </environment>
+    <script src="/hub/signalr.js"></script>
+    <script src="/hub/hub.js"></script>
+    <script src="/questions/questions.js"></script>
+    <script src="/notes/notes.js"></script>
+    <script src="~/show.js"></script>
+}

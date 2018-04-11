@@ -1,0 +1,176 @@
+{
+  "vue": {
+    "version": "vue@2.5.16",
+    "files": [
+      {
+        "file": "/dist/vue.js",
+        "cdn": "https://unpkg.com/vue@2.5.16/dist/vue.js",
+        "local": "wwwroot/lib/vue/vue.js",
+        "integrity": "sha384-uDHwRgVGzCbHUyl2dKQHqgCAab0OIx/w9PqT3pvjaX/ZGARjKanO5mJGjmdixblb"
+      },
+      {
+        "file": "/dist/vue.min.js",
+        "cdn": "https://unpkg.com/vue@2.5.16/dist/vue.min.js",
+        "local": "wwwroot/lib/vue/vue.min.js",
+        "integrity": "sha384-DwsLA0O/He+RjlS7pFkqEHfsCgdTMU+nSuUq/qkxvKSTED+s4vRttKEZtf4xTW1+"
+      }
+    ]
+  },
+  "bootstrap": {
+    "version": "bootstrap@4.0.0",
+    "files": [
+      {
+        "file": "/dist/js/bootstrap.bundle.js",
+        "cdn": "https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.bundle.js",
+        "local": "wwwroot/lib/bootstrap/js/bootstrap.bundle.js",
+        "integrity": "sha384-jsto7BKLxIckSZGIaMHhrgLyfPsKCpgz/n/8+LSM7Wu3jcOYL9aLBn42goF34TWC"
+      },
+      {
+        "file": "/dist/js/bootstrap.bundle.js.map",
+        "cdn": "https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.bundle.js.map",
+        "local": "wwwroot/lib/bootstrap/js/bootstrap.bundle.js.map",
+        "integrity": "sha384-g9ztExxhvbat0r2sVl3YnTomPFdx0ikBVBjY1OtEBMo6N9ElPhEfyVq0rX901seU"
+      },
+      {
+        "file": "/dist/js/bootstrap.bundle.min.js",
+        "cdn": "https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js",
+        "local": "wwwroot/lib/bootstrap/js/bootstrap.bundle.min.js",
+        "integrity": "sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+      },
+      {
+        "file": "/dist/js/bootstrap.bundle.min.js.map",
+        "cdn": "https://unpkg.com/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js.map",
+        "local": "wwwroot/lib/bootstrap/js/bootstrap.bundle.min.js.map",
+        "integrity": "sha384-cH2LWMiZFzgQvUzyTqMxSL03OqQ9k80dQkcpCdjLA9S1xHxIW0vcVUITrXTQN0SE"
+      }
+    ]
+  },
+  "jquery": {
+    "version": "jquery@3.3.1",
+    "files": [
+      {
+        "file": "/dist/jquery.slim.js",
+        "cdn": "https://unpkg.com/jquery@3.3.1/dist/jquery.slim.js",
+        "local": "wwwroot/lib/jquery/jquery.slim.js",
+        "integrity": "sha384-sh6iinGECmk2oNezd0GDVuXqoHrZzF3PTML2nyt/lC61v2p1W7hGll/JkRFCOcMf"
+      },
+      {
+        "file": "/dist/jquery.slim.min.js",
+        "cdn": "https://unpkg.com/jquery@3.3.1/dist/jquery.slim.min.js",
+        "local": "wwwroot/lib/jquery/jquery.slim.min.js",
+        "integrity": "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      },
+      {
+        "file": "/dist/jquery.slim.min.map",
+        "cdn": "https://unpkg.com/jquery@3.3.1/dist/jquery.slim.min.map",
+        "local": "wwwroot/lib/jquery/jquery.slim.min.map",
+        "integrity": "sha384-eXQhcgJpJKlQSB631xd1cBQ7sPkP5QW2DZTHQY+ChrTQVOzpgbbJ/8Fb6maccTIN"
+      }
+    ]
+  },
+  "bootswatch/darkly": {
+    "version": "bootswatch@4.0.0",
+    "files": [
+      {
+        "file": "/dist/darkly/bootstrap.css",
+        "cdn": "https://unpkg.com/bootswatch@4.0.0/dist/darkly/bootstrap.css",
+        "local": "wwwroot/lib/bootswatch/darkly/bootstrap.css",
+        "integrity": "sha384-MtDYCLkEI7u+9Bnye5jvJeQwVrOZQ2QFGEyyNY7gZg9cn7lU27HCFhlh3C41GW6o"
+      },
+      {
+        "file": "/dist/darkly/bootstrap.min.css",
+        "cdn": "https://unpkg.com/bootswatch@4.0.0/dist/darkly/bootstrap.min.css",
+        "local": "wwwroot/lib/bootswatch/darkly/bootstrap.min.css",
+        "integrity": "sha384-p8bH4RlA/kdF4wbAoep+/6VeOQI2IAWa9zLjTIQbQLv2FuCjX/W/FkdYdeKISDvK"
+      }
+    ]
+  },
+  "font-awesome": {
+    "version": "font-awesome@4.7.0",
+    "files": [
+      {
+        "file": "/css/font-awesome.css",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css",
+        "local": "wwwroot/lib/font-awesome/css/font-awesome.css",
+        "integrity": "sha384-FckWOBo7yuyMS7In0aXZ0aoVvnInlnFMwCv77x9sZpFgOonQgnBj1uLwenWVtsEj"
+      },
+      {
+        "file": "/css/font-awesome.css.map",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css.map",
+        "local": "wwwroot/lib/font-awesome/css/font-awesome.css.map",
+        "integrity": "sha384-wWYGaw6eOdtlU+9Qvm8knJM1z+Eu6gb3E15DfXAAUjYtuR1aAjl9AS231tqdLKlo"
+      },
+      {
+        "file": "/css/font-awesome.min.css",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css",
+        "local": "wwwroot/lib/font-awesome/css/font-awesome.min.css",
+        "integrity": "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      },
+      {
+        "file": "/fonts/FontAwesome.otf",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/FontAwesome.otf",
+        "local": "wwwroot/lib/font-awesome/fonts/FontAwesome.otf",
+        "integrity": "sha384-7AxH7c5DMKm53fxbc2HaPopOPZBE7W43HdFmP2Itt4aQS9DDq9rkE0IzE2ldLvmw"
+      },
+      {
+        "file": "/fonts/fontawesome-webfont.eot",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/fontawesome-webfont.eot",
+        "local": "wwwroot/lib/font-awesome/fonts/fontawesome-webfont.eot",
+        "integrity": "sha384-aT4Js4F9nY6/YfdaUe74bgxzlDR1S188jXIJZQj981StDN6YfBNOetz0JVYt8RRs"
+      },
+      {
+        "file": "/fonts/fontawesome-webfont.svg",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/fontawesome-webfont.svg",
+        "local": "wwwroot/lib/font-awesome/fonts/fontawesome-webfont.svg",
+        "integrity": "sha384-cpmd2Pb8rcQw0Rb0JqVxqpRf1aPgEYmq/SvC4aU562SjUEQ+KClejtxnrYLwTOI1"
+      },
+      {
+        "file": "/fonts/fontawesome-webfont.ttf",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/fontawesome-webfont.ttf",
+        "local": "wwwroot/lib/font-awesome/fonts/fontawesome-webfont.ttf",
+        "integrity": "sha384-arWNUkFcwgK/p/bP6IcquY+ZOXqnmOVkdFBJpkkKX7ldohEAUno5hxI+lm4tn4Cm"
+      },
+      {
+        "file": "/fonts/fontawesome-webfont.woff",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/fontawesome-webfont.woff",
+        "local": "wwwroot/lib/font-awesome/fonts/fontawesome-webfont.woff",
+        "integrity": "sha384-miAIzLueFC2a1i22Q520oFQwc/N2wtaYe93QyrKYlj5f0T0+DkQEpMs7S+MvkTW/"
+      },
+      {
+        "file": "/fonts/fontawesome-webfont.woff2",
+        "cdn": "https://unpkg.com/font-awesome@4.7.0/fonts/fontawesome-webfont.woff2",
+        "local": "wwwroot/lib/font-awesome/fonts/fontawesome-webfont.woff2",
+        "integrity": "sha384-wmfasCsFE3p9BgQSCciiJ0R6GvOSsKKZJMXBvTiCuWa3ypa5yXGVjSdzuU/ON6P6"
+      }
+    ]
+  },
+  "@reactivex/rxjs/global": {
+    "version": "@reactivex",
+    "files": [
+      {
+        "file": "/dist/global/Rx.js",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.js",
+        "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.js",
+        "integrity": "sha384-BhllVCH+Ahf1IWmm8jUZz6K6zAvlaFQlRPxtNXhxBY9C4gklKom3A5Mdu1IvCtY9"
+      },
+      {
+        "file": "/dist/global/Rx.js.map",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.js.map",
+        "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.js.map",
+        "integrity": "sha384-K2uXMjzQn+tbM52O9f4csn4Npo3sdYqEZTE9fjxVBxtvk4LXfA/afKj8WtZ9fKCZ"
+      },
+      {
+        "file": "/dist/global/Rx.min.js",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.min.js",
+        "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.min.js",
+        "integrity": "sha384-LYPfyX2q+SNly4K2wqjt+demgf0pBMCCd0C14kY9SIoEERaTRdmoknW+yZYZ5WPV"
+      },
+      {
+        "file": "/dist/global/Rx.min.js.map",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.min.js.map",
+        "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.min.js.map",
+        "integrity": "sha384-5jDFAUIxZt3ThbUhpI+q9VnWFcyFtnl6CaPeHxx7p9B5SxBWdPewMKUqhxpQrEFF"
+      }
+    ]
+  }
+}

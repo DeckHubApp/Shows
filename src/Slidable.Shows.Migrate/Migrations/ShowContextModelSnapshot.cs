@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
-using ShtikLive.Shows.Data;
+using Slidable.Shows.Data;
 
 namespace Slidable.Shows.Migrate.Migrations
 {
