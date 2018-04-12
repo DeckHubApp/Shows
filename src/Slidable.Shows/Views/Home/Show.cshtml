@@ -5,11 +5,11 @@
     Layout = "_Layout";
 }
 
-<div class="row">
-    <div class="col-sm-12 col-md-6">
+@*<div class="row">
+    <div class="col-sm-12 col-md-8">
         <img src="/slides/@Model.Place/@Model.Presenter/@Model.Slug/@Model.Slide" alt="Slide @Model.Slide" class="img-fluid" id="slide-image"/>
     </div>
-    <div class="col-sm-12 col-md-6">
+    <div class="col-sm-12 col-md-4">
         <ul class="nav nav-tabs" id="tools-tabs" role="tablist">
             <li class="nav-item">
                 <a href="#notes-pane" class="nav-link active" id="notes-tab" data-toggle="tab" role="tab" aria-controls="notes" aria-selected="true">Notes</a>
@@ -27,22 +27,47 @@
             </div>
         </div>
     </div>
+</div>*@
+<div class="row">
+    <div class="col-sm-12 col-md-8">
+        <div class="row">
+            <div class="col">
+                <img src="/slides/@Model.Place/@Model.Presenter/@Model.Slug/@Model.Slide" alt="Slide @Model.Slide" class="img-fluid" id="slide-image"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="notes"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <div id="questions"></div>
+    </div>
 </div>
 
 @section Scripts
 {
+    <script>
+        window.Slidable = window.Slidable || {};
+        window.Slidable.show = '@Model.Place/@Model.Presenter/@Model.Slug';
+        window.Slidable.slide = @Model.Slide;
+    </script>
+
     <environment include="Development">
         <script src="~/lib/@@reactivex/rxjs/global/Rx.js"></script>
         <script src="~/lib/vue/vue.js"></script>
     </environment>
     <environment exclude="Development">
-        <script src="https://unpkg.com/@@reactivex/rxjs@5.5.8/dist/global/Rx.min.js"
+        <script src="https://unpkg.com/@@reactivex/rxjs@5.5.9/dist/global/Rx.min.js"
                 asp-fallback-src="~/lib/@@reactivex/rxjs/global/Rx.min.js"
                 asp-fallback-test="window.Rx"
                 crossorigin="anonymous"
                 integrity="sha384-LYPfyX2q+SNly4K2wqjt+demgf0pBMCCd0C14kY9SIoEERaTRdmoknW+yZYZ5WPV">
         </script>
         <script src="https://unpkg.com/vue@2.5.16/dist/vue.min.js"
+                asp-fallback-src="~/lib/vue/vue.min.js"
+                asp-fallback-test="window.Vue"
                 crossorigin="anonymous"
                 integrity="sha384-DwsLA0O/He+RjlS7pFkqEHfsCgdTMU+nSuUq/qkxvKSTED+s4vRttKEZtf4xTW1+"></script>
     </environment>

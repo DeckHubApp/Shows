@@ -1,6 +1,6 @@
 ﻿$(() => {
 
-    const slideImage = $('#slide-image');
+    const slideImage = document.getElementById('slide-image');
 
     function loadSlide(url) {
         return fetch(url)
@@ -28,9 +28,10 @@
     }
 
     function goBack () {
-        const parts = location.pathname.split("/");
-        const slide = Math.max(parseInt(parts.pop()) - 1, 0);
-        const href = location.href.replace(/\/[0-9]+$/, `/${slide}`);
+        const parts = location.pathname.split('/');
+        const current = parseInt(parts.pop());
+        if (current <= 0) return;
+        const href = location.href.replace(/\/[0-9]+$/, `/${current - 1}`);
         go(href);
     }
 

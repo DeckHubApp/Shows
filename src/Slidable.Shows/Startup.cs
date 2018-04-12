@@ -37,15 +37,15 @@ namespace Slidable.Shows
 
             ConfigureDataProtection(services, connectionMultiplexer);
 
-            services.Configure<MessagingOptions>(Configuration.GetSection("Messaging"));
-
             services.AddDbContextPool<ShowContext>(b =>
             {
                 b.UseNpgsql(Configuration.GetConnectionString("Shows"));
             });
 
+            services.Configure<MessagingOptions>(Configuration.GetSection("Messaging"));
             services.AddSingleton<IHostedService, ShowStartService>();
             services.AddSingleton<IHostedService, ShowSlideService>();
+            services.AddSingleton<RedisPublisher>();
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)

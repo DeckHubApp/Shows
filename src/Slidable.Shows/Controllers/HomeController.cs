@@ -61,7 +61,7 @@ namespace Slidable.Shows.Controllers
             return View(model);
         }
 
-        [HttpGet("{presenter}/{slug}/{number:int}/partial")]
+        [HttpGet("{place}/{presenter}/{slug}/{number:int}/partial")]
         public async Task<ActionResult<SlidePartial>> GetSlidePartial(string place, string presenter, string slug, int number, CancellationToken ct)
         {
             var show = await _context.Shows.SingleOrDefaultAsync(

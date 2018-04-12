@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using MessagePack;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.EntityFrameworkCore.Internal;
@@ -14,12 +15,15 @@ namespace Slidable.Shows.Messaging
     {
         private readonly ILogger<ShowSlideService> _logger;
         private readonly DbContextPool<ShowContext> _contextPool;
+        private readonly RedisPublisher _redis;
         private readonly QueueClient _client;
 
-        public ShowSlideService(IOptions<MessagingOptions> options, ILogger<ShowSlideService> logger, DbContextPool<ShowContext> contextPool)
+        [UsedImplicitly]
+        public ShowSlideService(IOptions<MessagingOptions> options, ILogger<ShowSlideService> logger, DbContextPool<ShowContext> contextPool, RedisPublisher redis)
         {
             _logger = logger;
             _contextPool = contextPool;
+            _redis = redis;
             if (string.IsNullOrWhiteSpace(options.Value.ServiceBusConnectionString))
             {
                 _logger.LogWarning("No ServiceBusConnectionString configured.");
@@ -69,6 +73,7 @@ namespace Slidable.Shows.Messaging
                 }
 
                 await _client.CompleteAsync(message.SystemProperties.LockToken).ConfigureAwait(false);
+                _redis.PublishSlideAvailable(slide.Place, slide.Presenter, slide.Slug, slide.Number);
             }
             catch (System.Exception ex)
             {

@@ -149,27 +149,27 @@
     "files": [
       {
         "file": "/dist/global/Rx.js",
-        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.js",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.9/dist/global/Rx.js",
         "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.js",
-        "integrity": "sha384-BhllVCH+Ahf1IWmm8jUZz6K6zAvlaFQlRPxtNXhxBY9C4gklKom3A5Mdu1IvCtY9"
+        "integrity": "sha384-nuYbgWXccVZPBz1oet0tNkUJtWVqWfHeKYjpTnbI3XqaDaG2hTMeFIw4SqxSBePT"
       },
       {
         "file": "/dist/global/Rx.js.map",
-        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.js.map",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.9/dist/global/Rx.js.map",
         "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.js.map",
-        "integrity": "sha384-K2uXMjzQn+tbM52O9f4csn4Npo3sdYqEZTE9fjxVBxtvk4LXfA/afKj8WtZ9fKCZ"
+        "integrity": "sha384-RT9DIQIQQNOLdj0LJaW8GRd1oBZ2XflRAv1zY3SNi4zUgsFF5UQt4qNpx0YH8KlX"
       },
       {
         "file": "/dist/global/Rx.min.js",
-        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.min.js",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.9/dist/global/Rx.min.js",
         "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.min.js",
         "integrity": "sha384-LYPfyX2q+SNly4K2wqjt+demgf0pBMCCd0C14kY9SIoEERaTRdmoknW+yZYZ5WPV"
       },
       {
         "file": "/dist/global/Rx.min.js.map",
-        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.8/dist/global/Rx.min.js.map",
+        "cdn": "https://unpkg.com/@reactivex/rxjs@5.5.9/dist/global/Rx.min.js.map",
         "local": "wwwroot/lib/@reactivex/rxjs/global/Rx.min.js.map",
-        "integrity": "sha384-5jDFAUIxZt3ThbUhpI+q9VnWFcyFtnl6CaPeHxx7p9B5SxBWdPewMKUqhxpQrEFF"
+        "integrity": "sha384-VS3BUVmVtwI0majFlSx0/v7mfIar4tLV1zVJxx+BELseV/NAOITivr3le2X2nT8k"
       }
     ]
   }
