@@ -2,7 +2,7 @@ apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   name: shows
-  namespace: shtik
+  namespace: slidable
 spec:
   replicas: 2
   template:
@@ -11,14 +11,34 @@ spec:
         app: shows
     spec:
       containers:
-      - image: shtik/shows:1.1.0
+      - image: slidable/shows:1.0.0-alpha1
         imagePullPolicy: Always
         name: shows
         env:
+          - name: Runtime__PathBase
+            value: '/shows'
+          - name: Redis__Host
+            value: 'redis'
+          - name: Runtime__IdentityPathPrefix
+            value: 'i'
+          - name: AppMetrics__InfluxDbServer
+            value: 'http://rlmetrics.eastus.cloudapp.azure.com:8086'
+          - name: AppMetrics__InfluxDbDatabase
+            value: 'slidable'
+          - name: Security__ApiKeyHashPhrase
+            valueFrom:
+              secretKeyRef:
+                name: api-key
+                key: hashPhrase
           - name: ConnectionStrings__Shows
             valueFrom:
               secretKeyRef:
                 name: shows-db
+                key: connstr
+          - name: Messaging__ServiceBusConnectionString
+            valueFrom:
+              secretKeyRef:
+                name: servicebus
                 key: connstr
         ports:
         - containerPort: 80
@@ -27,7 +47,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: shows
-  namespace: shtik
+  namespace: slidable
 spec:
   ports:
   - port: 80
@@ -35,3 +55,21 @@ spec:
     name: http
   selector:
     app: shows
+  sessionAffinity: ClientIP
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: shows
+  namespace: slidable
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: slidable.io
+    http:
+      paths:
+      - path: /shows
+        backend:
+          serviceName: shows
+          servicePort: 80
