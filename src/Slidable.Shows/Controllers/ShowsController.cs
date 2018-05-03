@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Slidable.Shows.Data;
@@ -11,23 +12,21 @@ using Slidable.Shows.Models.Live;
 namespace Slidable.Shows.Controllers
 {
     [Route("")]
-    public class HomeController : Controller
+    public class ShowsController : Controller
     {
-        private readonly ShowContext _context;
-        private readonly ILogger<HomeController> _logger;
+        private readonly IShowData _data;
+        private readonly ILogger<ShowsController> _logger;
 
-        public HomeController(ShowContext context, ILogger<HomeController> logger)
+        public ShowsController(IShowData data, ILogger<ShowsController> logger)
         {
-            _context = context;
+            _data = data;
             _logger = logger;
         }
 
         [HttpGet("{place}/{presenter}/{slug}")]
         public async Task<IActionResult> Latest(string place, string presenter, string slug, CancellationToken ct)
         {
-            var show = await _context.Shows.SingleOrDefaultAsync(
-                    s => s.Place == place && s.Presenter == presenter && s.Slug == slug, ct)
-                .ConfigureAwait(false);
+            var show = await _data.Get(place, presenter, slug, ct).ConfigureAwait(false);
 
             if (show == null)
             {
@@ -41,9 +40,8 @@ namespace Slidable.Shows.Controllers
         [HttpGet("{place}/{presenter}/{slug}/{slide:int}")]
         public async Task<IActionResult> Show(string place, string presenter, string slug, int slide, CancellationToken ct)
         {
-            var show = await _context.Shows.SingleOrDefaultAsync(
-                    s => s.Place == place && s.Presenter == presenter && s.Slug == slug, ct)
-                .ConfigureAwait(false);
+            var show = await _data.Get(place, presenter, slug, ct).ConfigureAwait(false);
+            
             if (show == null)
             {
                 return NotFound();
@@ -64,9 +62,7 @@ namespace Slidable.Shows.Controllers
         [HttpGet("{place}/{presenter}/{slug}/{number:int}/partial")]
         public async Task<ActionResult<SlidePartial>> GetSlidePartial(string place, string presenter, string slug, int number, CancellationToken ct)
         {
-            var show = await _context.Shows.SingleOrDefaultAsync(
-                    s => s.Place == place && s.Presenter == presenter && s.Slug == slug, ct)
-                .ConfigureAwait(false);
+            var show = await _data.Get(place, presenter, slug, ct).ConfigureAwait(false);
 
             if (show == null || show.HighestSlideShown.GetValueOrDefault() < number) return NotFound();
 
