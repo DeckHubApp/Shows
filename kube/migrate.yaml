@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: shows-migrate
-  namespace: slidable
+  namespace: deckhub
 spec:
   template:
     metadata:
@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: shows-migrate
-        image: slidable/shows-migrate:1.0.0-alpha1
+        image: deckhub/shows-migrate:1.0.0-alpha1
         args: ["$(SECRET_CONNSTR)"]
         env:
           - name: SECRET_CONNSTR

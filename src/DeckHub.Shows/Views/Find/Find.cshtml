@@ -1,0 +1,44 @@
+﻿@using DeckHub.Shows.Models.Find
+@model FindByTagViewModel
+
+@{
+    ViewBag.Title = "Shows";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            @if (Model.Shows.Count == 0)
+            {
+                <h3>No matching shows found.</h3>
+            }
+            else
+            {
+                <h3>Found @Model.Shows.Count shows:</h3>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-12">
+        @foreach (var show in Model.Shows)
+        {
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">@show.Title</h5>
+                    <p class="card-text">
+                        @show.Presenter
+                        <br/>
+                        @show.Place
+                        <br/>
+                        @show.Time.ToString("dd MMMM yyyy")
+                    </p>
+                    <a href="@show.Place/@show.Presenter/@show.Slug" class="btn btn-success">
+                        Join
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

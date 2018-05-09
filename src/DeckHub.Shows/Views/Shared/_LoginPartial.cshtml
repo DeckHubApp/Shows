@@ -1,0 +1,24 @@
+@using System.Security.Claims
+@using DeckHub.Shows.Services
+
+@inject IIdentityPaths IdentityPaths
+
+@* ReSharper disable Html.PathError *@
+@if (User.Identity.IsAuthenticated)
+{
+    <ul class="navbar-nav navbar-right flex-row">
+        <li class="nav-item">
+            <a href="@IdentityPaths.Manage" title="Manage" class="nav-link"><span class="fa fa-user"></span> @User.FindFirstValue(DeckHubClaimTypes.Handle)</a>
+        </li>
+        <li class="nav-item ml-2">
+            <a href="@IdentityPaths.Logout" class="btn btn-outline-secondary">Log out</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a class="btn btn-info" href="@IdentityPaths.Login">Log in</a></li>
+    </ul>
+}
+@* ReSharper restore Html.PathError *@
