@@ -44,6 +44,7 @@ namespace DeckHub.Shows
 
             services.Configure<MessagingOptions>(Configuration.GetSection("Messaging"));
             services.AddSingleton<IShowSlideQueueClient, ShowSlideQueueClient>();
+            services.AddSingleton<IShowStartQueueClient, ShowStartQueueClient>();
             services.AddSingleton<IHostedService, ShowStartProcessor>();
             services.AddSingleton<IHostedService, ShowSlideProcessor>();
             services.AddSingleton<RedisPublisher>();

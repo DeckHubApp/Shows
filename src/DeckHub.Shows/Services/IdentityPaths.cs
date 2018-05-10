@@ -11,9 +11,9 @@ namespace DeckHub.Shows.Services
             _prefix = configuration["Runtime:IdentityPathPrefix"];
         }
 
-        public string Login => Adjust("/Identity/Account/Login");
-        public string Logout => Adjust("/Identity/Account/Logout");
-        public string Manage => Adjust("/Identity/Account/Manage");
+        public string Login => Adjust("/identity/Account/Login");
+        public string Logout => Adjust("/identity/Account/Logout");
+        public string Manage => Adjust("/identity/Account/Manage");
 
         private string Adjust(string path)
         {

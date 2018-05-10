@@ -11,7 +11,7 @@ spec:
         app: shows
     spec:
       containers:
-      - image: deckhub/shows:1.0.0-alpha1
+      - image: deckhub/shows:1.0.0-alpha2
         imagePullPolicy: Always
         name: shows
         env:
@@ -19,8 +19,6 @@ spec:
             value: '/shows'
           - name: Redis__Host
             value: 'redis'
-          - name: Runtime__IdentityPathPrefix
-            value: 'i'
           - name: AppMetrics__InfluxDbServer
             value: 'http://rlmetrics.eastus.cloudapp.azure.com:8086'
           - name: AppMetrics__InfluxDbDatabase
